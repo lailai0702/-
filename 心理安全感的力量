@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>奇美醫院 - 心理安全感的力量</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+        }
+        .nav-link:hover {
+            color: #ff8c00;
+        }
+        .card {
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        }
+        .video-thumbnail {
+            background-color: #ff8c00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 2.5rem;
+        }
+        .bg-chimei-orange {
+            background-color: #ff8c00;
+        }
+        .text-chimei-orange {
+            color: #ff8c00;
+        }
+        .button-shadow {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navbar -->
+    <header class="bg-white sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold text-chimei-orange rounded-md px-2">奇美醫院</a>
+            <div class="space-x-4 hidden md:flex">
+                <a href="#home" class="nav-link text-gray-600 hover:text-chimei-orange rounded-md p-2 transition duration-300">首頁</a>
+                <a href="#about" class="nav-link text-gray-600 hover:text-chimei-orange rounded-md p-2 transition duration-300">介紹與說明</a>
+                <a href="#videos" class="nav-link text-gray-600 hover:text-chimei-orange rounded-md p-2 transition duration-300">影音學習區</a>
+                <a href="#feedback" class="nav-link text-gray-600 hover:text-chimei-orange rounded-md p-2 transition duration-300">學習心得回饋</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-600 focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-md">
+            <a href="#home" class="block py-2 px-6 text-gray-600 hover:text-chimei-orange hover:bg-gray-50 transition duration-300">首頁</a>
+            <a href="#about" class="block py-2 px-6 text-gray-600 hover:text-chimei-orange hover:bg-gray-50 transition duration-300">介紹與說明</a>
+            <a href="#videos" class="block py-2 px-6 text-gray-600 hover:text-chimei-orange hover:bg-gray-50 transition duration-300">影音學習區</a>
+            <a href="#feedback" class="block py-2 px-6 text-gray-600 hover:text-chimei-orange hover:bg-gray-50 transition duration-300">學習心得回饋</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+        <!-- Home Section -->
+        <section id="home" class="flex flex-col md:flex-row items-center justify-between min-h-screen pt-24 md:pt-0">
+            <div class="text-center md:text-left md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-gray-900 mb-4">
+                    【心理安全感的力量】讀書會
+                </h1>
+                <p class="text-2xl font-light text-chimei-orange mb-6">
+                    誠摯邀請您一起來參與~
+                </p>
+                <p class="text-lg text-gray-600 mb-8 max-w-lg mx-auto md:mx-0">
+                    在安心中發聲、在發聲中成長，營造信賴、尊重、無所畏懼的奇美。
+                </p>
+            </div>
+            <div class="md:w-1/2 flex flex-col items-center space-y-8">
+                <img src="https://placehold.co/400x500/ff8c00/ffffff?text=林院長贈書" alt="林院長贈書" class="rounded-lg shadow-lg w-full max-w-lg h-auto">
+                <img src="https://placehold.co/600x300/ff8c00/ffffff?text=團隊合作" alt="樂在團隊合作" class="rounded-lg shadow-lg w-full max-w-lg h-auto">
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20">
+            <h2 class="text-4xl font-bold text-center text-chimei-orange mb-12">介紹與說明</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-lg card">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">推動核心理念</h3>
+                    <p class="text-gray-600">
+                        為推動《 JIT2.0樂在團隊合作》與建立《韌性文化與工作環境》，我們以《心理安全感的力量》一書為核心，期望全院同仁能深入理解與實踐此重要概念。
+                    </p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg card">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">學習行動方案</h3>
+                    <p class="text-gray-600">
+                        透過錄製影音分享，我們提供多元且廣泛的學習管道，以提升管理職能領導與員工的幸福韌性。此行動方案旨在建構醫療團隊之間開放、誠實、高效的合作氛圍，進而建立對「心理安全感」核心概念的認識與共識，並促進跨階層溝通與對話品質的提升。最終，我們希望提升正向的安全文化，增進團隊信任、尊重、互助與持續進步的醫療環境。
+                    </p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg card">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">學習架構</h3>
+                    <ul class="text-gray-600 space-y-4">
+                        <li>
+                            <p><strong>書籍與期程：</strong>本次選書《心理安全感的力量》，全書三篇、共八章。透過院長室主管的勉勵，以及8場各篇章導讀分享，每場約1小時，錄製成影音作為內部學習教材。</p>
+                        </li>
+                        <li>
+                            <p><strong>首播與壓軸：</strong>邀請林院長與田首席副院長分享贈書初衷與期許，營造並支持心理安全感文化與環境。</p>
+                        </li>
+                        <li>
+                            <p><strong>與談陣容：</strong>每場邀請陳志金主任或杜漢祥部長擔任主持人，並有3位與談者，包含病安暨醫品委員會委員、病房主任、護理各層級主管。</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Learning Section -->
+        <section id="videos" class="py-20 bg-gray-100">
+            <h2 class="text-4xl font-bold text-center text-chimei-orange mb-12">影音學習區</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 首播 Card -->
+                <div class="card p-6 rounded-lg shadow-lg">
+                    <div class="text-chimei-orange text-lg font-bold mb-2">首播</div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">支持與營造心理安全感文化與環境</h3>
+                    <p class="text-gray-600 mb-4"><strong>核心理念：</strong>心態開放、勇於嘗試。在安心中發聲、在發聲中成長，營造信賴、尊重、無所畏懼的奇美。</p>
+                    <p class="text-gray-600 mb-4"><strong>與談人：</strong>田宇峯院長、杜漢祥部長、廖熏香顧問。</p>
+                    <p class="text-gray-600 mb-6"><strong>主持人：</strong>陳志金主任。</p>
+                    <a href="https://drive.google.com/file/d/1f4OyfVKCyWk2yLS7bJTY78ZJdD11D8L7/view?usp=sharing" target="_blank" class="block w-full text-center bg-chimei-orange text-white py-2 px-4 rounded-full hover:bg-orange-600 transition duration-300 button-shadow">觀看影片</a>
+                </div>
+
+                <!-- EP1 Card -->
+                <div class="card p-6 rounded-lg shadow-lg">
+                    <div class="text-chimei-orange text-lg font-bold mb-2">EP1</div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">打穩地基</h3>
+                    <p class="text-gray-600 mb-4"><strong>核心理念：</strong>心理安全感是讓人敢說真話、促進團隊學習與進步的基礎環境，缺乏心理安全感的團隊，成員即使察覺風險，也會選擇沉默。</p>
+                    <p class="text-gray-600 mb-4"><strong>與談人：</strong>蔡岡廷部長、馬淑清部長、李玉媚護理長。</p>
+                    <p class="text-gray-600 mb-6"><strong>主持人：</strong>陳志金主任。</p>
+                    <a href="#" target="_blank" class="block w-full text-center bg-chimei-orange text-white py-2 px-4 rounded-full hover:bg-orange-600 transition duration-300 button-shadow">觀看影片</a>
+                </div>
+
+                <!-- EP2 Card -->
+                <div class="card p-6 rounded-lg shadow-lg">
+                    <div class="text-chimei-orange text-lg font-bold mb-2">EP2</div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">文獻告訴我們的事</h3>
+                    <p class="text-gray-600 mb-4"><strong>核心理念：</strong>心理安全感是組織學習、團隊合作、錯誤回報、創新行為與績效表現的基礎。它決定人們是否願意參與討論、提問、挑戰現狀與回報錯誤。</p>
+                    <p class="text-gray-600 mb-4"><strong>與談人：</strong>謝孟倉主任、黃秋綿副部長、王維那督導。</p>
+                    <p class="text-gray-600 mb-6"><strong>主持人：</strong>杜漢祥部長。</p>
+                    <a href="#" target="_blank" class="block w-full text-center bg-chimei-orange text-white py-2 px-4 rounded-full hover:bg-orange-600 transition duration-300 button-shadow">觀看影片</a>
+                </div>
+                
+                <!-- EP3 Card -->
+                <div class="card p-6 rounded-lg shadow-lg">
+                    <div class="text-chimei-orange text-lg font-bold mb-2">EP3</div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">可避免的失敗</h3>
+                    <p class="text-gray-600 mb-4"><strong>核心理念：</strong>許多失敗與災難其實可避免發生，因為那些知道關鍵問題的人選擇沉默。這些沉默反映的是一個缺乏心理安全感的文化。</p>
+                    <p class="text-gray-600 mb-4"><strong>與談人：</strong>許建清副院長、蘇慧真部長、陳怡如組長。</p>
+                    <p class="text-gray-600 mb-6"><strong>主持人：</strong>杜漢祥部長。</p>
+                    <a href="#" target="_blank" class="block w-full text-center bg-chimei-orange text-white py-2 px-4 rounded-full hover:bg-orange-600 transition duration-300 button-shadow">觀看影片</a>
+                </div>
+
+                <!-- EP4 Card -->
+                <div class="card p-6 rounded-lg shadow-lg">
+                    <div class="text-chimei-orange text-lg font-bold mb-2">EP4</div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">危險的沉默</h3>
+                    <p class="text-gray-600 mb-4"><strong>核心理念：</strong>沉默不是中立，而是風險。心理不安全讓員工不敢提問、發出警訊、承認錯誤，也阻礙學習與創新，本章指出「沉默會殺人」。</p>
+                    <p class="text-gray-600 mb-4"><strong>與談人：</strong>陳輝宇物理治療師、柯雅婷督導、張明娟護理長。</p>
+                    <p class="text-gray-600 mb-6"><strong>主持人：</strong>杜漢祥部長。</p>
+                    <a href="#" target="_blank" class="block w-full text-center bg-chimei-orange text-white py-2 px-4 rounded-full hover:bg-orange-600 transition duration-300 button-shadow">觀看影片</a>
+                </div>
+                
+                <!-- EP5 Card -->
+                <div class="card p-6 rounded-lg shadow-lg">
+                    <div class="text-chimei-orange text-lg font-bold mb-2">EP5</div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">無所畏懼的工作場所</h3>
+                    <p class="text-gray-600 mb-4"><strong>核心理念：</strong>心理安全感不只是避免失敗，更是創造卓越與創新的關鍵條件。在「無所畏懼的工作場所」，人們可以盡情貢獻想法，達到超乎預期的表現。</p>
+                    <p class="text-gray-600 mb-4"><strong>與談人：</strong>陳俊嘉主任、李怡珍副主任、黃代泱護理長。</p>
+                    <p class="text-gray-600 mb-6"><strong>主持人：</strong>陳志金主任。</p>
+                    <a href="#" target="_blank" class="block w-full text-center bg-chimei-orange text-white py-2 px-4 rounded-full hover:bg-orange-600 transition duration-300 button-shadow">觀看影片</a>
+                </div>
+
+                <!-- EP6 Card -->
+                <div class="card p-6 rounded-lg shadow-lg">
+                    <div class="text-chimei-orange text-lg font-bold mb-2">EP6</div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">安然無恙</h3>
+                    <p class="text-gray-600 mb-4"><strong>核心理念：</strong>心理安全感是確保員工與顧客「感到被尊重、被傾聽、被照顧」的關鍵。真正的服務品質始於團隊內部的心理安全感。</p>
+                    <p class="text-gray-600 mb-4"><strong>與談人：</strong>柯獻欽部長、吳美珍組長、葉筱鳳護理長。</p>
+                    <p class="text-gray-600 mb-6"><strong>主持人：</strong>杜漢祥部長。</p>
+                    <a href="#" target="_blank" class="block w-full text-center bg-chimei-orange text-white py-2 px-4 rounded-full hover:bg-orange-600 transition duration-300 button-shadow">觀看影片</a>
+                </div>
+
+                <!-- EP7 Card -->
+                <div class="card p-6 rounded-lg shadow-lg">
+                    <div class="text-chimei-orange text-lg font-bold mb-2">EP7</div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">實現目標</h3>
+                    <p class="text-gray-600 mb-4"><strong>核心理念：</strong>心理安全感必須透過領導者刻意的設計與持續的行動來建立與維護。本章提出實作框架，讓團隊敢說、願學、能創新。</p>
+                    <p class="text-gray-600 mb-4"><strong>與談人：</strong>陳綉琴副院長、謝昆霖主任、周敏怡護理長。</p>
+                    <p class="text-gray-600 mb-6"><strong>主持人：</strong>陳志金主任。</p>
+                    <a href="#" target="_blank" class="block w-full text-center bg-chimei-orange text-white py-2 px-4 rounded-full hover:bg-orange-600 transition duration-300 button-shadow">觀看影片</a>
+                </div>
+
+                <!-- EP8 Card -->
+                <div class="card p-6 rounded-lg shadow-lg">
+                    <div class="text-chimei-orange text-lg font-bold mb-2">EP8</div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">下一步？</h3>
+                    <p class="text-gray-600 mb-4"><strong>核心理念：</strong>心理安全感是高績效、高學習、高創新的組織文化的基礎。領導者必須成為塑造心理安全環境的關鍵人物，從每一次對話開始。</p>
+                    <p class="text-gray-600 mb-4"><strong>與談人：</strong>湯宏仁副院長、江惠英副部長、李芷宜護理長。</p>
+                    <p class="text-gray-600 mb-6"><strong>主持人：</strong>杜漢祥部長。</p>
+                    <a href="#" target="_blank" class="block w-full text-center bg-chimei-orange text-white py-2 px-4 rounded-full hover:bg-orange-600 transition duration-300 button-shadow">觀看影片</a>
+                </div>
+
+                <!-- 壓軸場 Card -->
+                <div class="card p-6 rounded-lg shadow-lg">
+                    <div class="text-chimei-orange text-lg font-bold mb-2">壓軸場</div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">院長分享贈書初衷與期許</h3>
+                    <p class="text-gray-600 mb-4"><strong>核心理念：</strong>建立心理安全感的力量，為奇美醫院帶來改變。在安心中發聲、在發聲中成長，營造信賴、尊重、無所畏懼的奇美。</p>
+                    <p class="text-gray-600 mb-4"><strong>與談人：</strong>林宏榮院長、紀淑靜顧問、廖家德部長。</p>
+                    <p class="text-gray-600 mb-6"><strong>主持人：</strong>陳志金主任。</p>
+                    <a href="#" target="_blank" class="block w-full text-center bg-chimei-orange text-white py-2 px-4 rounded-full hover:bg-orange-600 transition duration-300 button-shadow">觀看影片</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feedback Section -->
+        <section id="feedback" class="py-20 text-center">
+            <h2 class="text-4xl font-bold text-chimei-orange mb-8">學習心得回饋</h2>
+            <p class="text-lg text-gray-600 mb-8">【心理安全感的力量】讀書會學習心得回饋。請您不吝提供參與心得，填寫 Forms 回饋，掃描 QR-code 或點擊連結前往。</p>
+            <div class="flex flex-col items-center justify-center">
+                <img src="https://placehold.co/256x256/2a9d8f/ffffff?text=QR+Code" alt="學習心得回饋 QR-code" class="w-64 h-64 rounded-lg shadow-lg mb-6">
+                <a href="https://forms.office.com/r/BjXYRR8B8r" target="_blank" class="text-chimei-orange font-semibold hover:underline">連結網址：https://forms.office.com/r/BjXYRR8B8r</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.getElementById(this.getAttribute('href').substring(1)).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // Close mobile menu after clicking a link
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+    </script>
+
+</body>
+</html>
