@@ -281,20 +281,139 @@
 
     </main>
 
-    <script>
+    <!-- Footer with Visitor Count -->
+    <footer class="bg-gray-800 text-white p-4 mt-12">
+        <div class="container mx-auto px-6 text-center text-sm">
+            <div id="visitor-count-container" class="py-2">
+                <!-- 瀏覽人次計數器，初始化時顯示讀取中 -->
+                瀏覽人次：<span id="visitor-count" class="font-bold text-chimei-orange">讀取中...</span>
+            </div>
+            <p>&copy; 奇美醫院 版權所有</p>
+        </div>
+    </footer>
+
+
+    <script type="module">
+        // Firebase Imports for Firestore and Auth
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, onSnapshot, increment } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        
+        // 設置 Firebase log level 為 Debug
+        setLogLevel('Debug');
+
+        /**
+         * 處理 Firebase 初始化、認證、計數器增長和即時監聽的邏輯
+         */
+        function initializeFirebaseAndCounter() {
+            // 定義唯一會觸發計數增長的目標 URL
+            const TARGET_URL = 'https://lailai0702.github.io/-/';
+
+            const visitorCountElement = document.getElementById('visitor-count');
+            
+            let firebaseConfig = {};
+            let appId = 'default-app-id';
+
+            try {
+                // 嘗試解析全局變數
+                firebaseConfig = typeof __firebase_config !== 'undefined' && __firebase_config ? JSON.parse(__firebase_config) : {};
+                appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+            } catch (e) {
+                console.error("Firebase 配置解析失敗:", e);
+                visitorCountElement.textContent = '配置錯誤';
+                return;
+            }
+
+
+            if (Object.keys(firebaseConfig).length === 0 || appId === 'default-app-id') {
+                console.error("Firebase 配置或 App ID 缺失。計數器停用。");
+                visitorCountElement.textContent = '連線錯誤'; 
+                return;
+            }
+
+            try {
+                const app = initializeApp(firebaseConfig);
+                const db = getFirestore(app);
+                const auth = getAuth(app);
+
+                // 公開數據路徑： artifacts/{appId}/public/data/site_stats/visitor_count
+                const COUNTER_PATH = `/artifacts/${appId}/public/data/site_stats/visitor_count`;
+                const counterDocRef = doc(db, COUNTER_PATH);
+
+                // 1. 認證（使用自訂 token 或匿名登入）
+                async function authenticateAndIncrement() {
+                    try {
+                        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+                        
+                        if (initialAuthToken) {
+                            await signInWithCustomToken(auth, initialAuthToken);
+                            console.log("Firebase: 使用 Custom Token 認證成功。");
+                        } else {
+                            await signInAnonymously(auth);
+                            console.log("Firebase: 使用匿名認證成功。");
+                        }
+
+                        // 判斷是否應該計數
+                        const currentURL = window.location.href.split('?')[0].split('#')[0]; // 移除 Query Params 和 Hash
+                        
+                        if (currentURL === TARGET_URL) {
+                             // 2. 瀏覽人次計數器原子性增長 (只有在匹配指定 URL 時才執行)
+                            await setDoc(counterDocRef, { count: increment(1) }, { merge: true });
+                            console.log(`Firebase: 瀏覽人次（因 URL 匹配: ${TARGET_URL}）已成功增加 1。`);
+                            visitorCountElement.style.color = 'lime'; // 成功增長時給予視覺提示
+                        } else {
+                            console.log(`Firebase: 瀏覽人次未增加。當前 URL: ${currentURL} 與目標 URL: ${TARGET_URL} 不符。僅讀取計數。`);
+                            // 重設顏色以表示僅讀取
+                            visitorCountElement.style.color = '#ff8c00'; 
+                        }
+
+                        // 3. 設置即時監聽器來顯示當前計數 (無論是否增加都應該顯示)
+                        onSnapshot(counterDocRef, (docSnap) => {
+                            if (docSnap.exists()) {
+                                const count = docSnap.data().count || 0;
+                                // 使用 toLocaleString() 格式化數字
+                                visitorCountElement.textContent = count.toLocaleString(); 
+                            } else {
+                                visitorCountElement.textContent = '1'; 
+                                console.log("Firebase: 計數文件不存在或正在初始化中。");
+                            }
+                        }, (error) => {
+                            console.error("Firebase ERROR: 監聽計數器時發生錯誤:", error);
+                            visitorCountElement.textContent = '監聽失敗';
+                        });
+
+                    } catch (error) {
+                        console.error("Firebase FATAL ERROR: 認證或數據操作失敗:", error);
+                        visitorCountElement.textContent = '連線失敗'; // 認證或寫入失敗
+                    }
+                }
+
+                authenticateAndIncrement();
+
+            } catch (error) {
+                console.error("Firebase FATAL ERROR: 初始化應用程式失敗:", error);
+                visitorCountElement.textContent = '初始化失敗';
+            }
+        }
+
+        // 啟動計數器邏輯
+        window.onload = initializeFirebaseAndCounter;
+
+        // 處理手機選單開關
         document.getElementById('mobile-menu-button').addEventListener('click', function() {
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Smooth scrolling for navigation links
+        // 處理導航連結平滑滾動
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 document.getElementById(this.getAttribute('href').substring(1)).scrollIntoView({
                     behavior: 'smooth'
                 });
-                // Close mobile menu after clicking a link
+                // 關閉手機選單
                 document.getElementById('mobile-menu').classList.add('hidden');
             });
         });
